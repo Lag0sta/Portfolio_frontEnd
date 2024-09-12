@@ -1,0 +1,17 @@
+.mainContainer {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly
+    
+}
+
+.skill {
+    width: 500px;
+    padding: 8px;
+    margin: 5px;
+    border: solid black;
+    border-radius: 5px;
+    
+}
+

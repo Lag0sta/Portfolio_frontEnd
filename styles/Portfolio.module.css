@@ -1,0 +1,9 @@
+.mainContainer h2 {
+    font-family: 'SDGlitch';
+    font-size: 10vh;
+    font-weight: initial;
+    color: black;
+
+    text-align: center;
+    margin-top: 20px;
+}

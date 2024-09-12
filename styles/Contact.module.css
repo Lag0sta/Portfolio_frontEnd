@@ -1,0 +1,70 @@
+.mainContainer {
+  
+    color: white;
+
+}
+
+.mainContainer h2 {
+    font-family: 'SDGlitch';
+    font-size: 10vh;
+    font-weight: initial;
+
+    text-align: center;
+    margin-top: 20px;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    
+
+
+}
+
+.contact .email {
+    width: 35%;
+    padding: 10px;
+    background: none;
+    border: solid white 1px;
+    border-radius: 1px;
+}
+
+.contact .object {
+    width: 35%;
+    padding: 10px;
+    background: none;
+    border: solid white 1px;
+    border-radius: 1px;
+}
+
+.contact .msg {
+    height: 30vh;
+    width: 35%;
+    padding: 10px;
+    background: none;
+    border: solid white 1px;
+    border-radius: 1px;
+}
+
+.contact button {
+    height: 7vh;
+    width: 17vh;
+    background: none;
+    border: solid white 1px;
+
+    font-family: 'Cascadia Code';
+    font-size: 3vh;
+    font-weight: bold;
+    color:rgba(250,250,250,0.8)
+}
+
+.contact input::placeholder {
+    font-family: 'Cascadia Code';
+    color:rgba(250,250,250,0.8)
+
+}

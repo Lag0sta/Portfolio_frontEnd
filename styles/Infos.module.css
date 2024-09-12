@@ -1,0 +1,43 @@
+.main {
+    height: 100vh;
+    padding-left: 40px;
+    padding-right: 40px;
+    display: flex;
+    justify-content: center;
+
+}
+
+
+.skills {
+  display: flex;
+  flex-direction: column;
+}
+.skills img{
+  width: 80vh
+}
+
+.skills button {
+  height: 10vh;
+  width: 20vh;
+
+  font-family: 'Cascadia Code';
+  font-weight: 500;
+
+  background: none;
+  border-radius: 1px;
+  
+}
+
+.profil {
+    width : 35%
+}
+
+.profil .portrait {
+  height: 50vh;
+  border-radius: 50%;
+  border: solid black 3px;
+}
+
+.profil p {
+  font-family: Cascadia Code;
+}

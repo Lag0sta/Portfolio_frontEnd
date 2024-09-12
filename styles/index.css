@@ -1,0 +1,6 @@
+@font-face {
+    font-family: "SDGlitch";
+    src: local("SDGlitch"),
+      url("../assets/fonts/SDGlitch.ttf") format("TrueTypeFont");
+    font-weight: normal;
+  }
