@@ -1,18 +1,21 @@
 import styles from '../styles/Header.module.css'
 
+
 function Header({handleScrollInfo}) {
+
+  console.log({handleScrollInfo})
 
     return (
     <div className = {styles.header}>
-      <div className={styles.el}>
+      <nav className={styles.el}>
         <img src='/assets/img/logo.png' alt='logo'/>
-        <div className = {styles.btn}>
+        <nav className = {styles.btn}>
           <button onClick={()=>handleScrollInfo()}>Info</button> 
           <button>Portfolio</button>
           <button>Contact</button> 
-        </div>
+        </nav>
      
-      </div> 
+      </nav> 
     </div>
 
     );

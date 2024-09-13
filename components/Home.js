@@ -1,10 +1,12 @@
+import { useRef } from 'react'
+
+
 import styles from '../styles/Home.module.css';
 import Header from './Header';
 import Infos from './Infos'
 import Portfolio from './Portfolio';
 import Contact from './Contact';
 
-import { useRef } from 'react'
 
 function Home() {
 
@@ -12,11 +14,15 @@ function Home() {
 
 
   function handleScrollInfo() {
-    infoRef.current.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'center'
-    })
+    console.log('Click')
+  //   if (infoRef.current) {
+
+  //   infoRef.current.scrollIntoView({
+  //     behavior: 'smooth',
+  //     block: 'nearest',
+  //     inline: 'center'
+  //   })
+  // }
   }
 
   return (
