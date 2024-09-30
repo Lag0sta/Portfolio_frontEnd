@@ -1,17 +1,76 @@
-.mainContainer {
-    margin: 20px;
+.main {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly
-    
-}
+        padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+.gaugeContainer {
+    height: 8vh;
+    width: 95vh;
+    margin-left: 20px;
 
-.skill {
-    width: 500px;
-    padding: 8px;
-    margin: 5px;
-    border: solid black;
+    transition: width 0.5s ease-in-out;
+ 
+
+
+  }
+  
+  .gaugeBackground {
+    display: inline-block;
+    width: 95vh;
+    height: 1.2vh;
+
+  }
+  
+  .gaugeFill {
+    background-color: black;
+    height: 100%;
+    transition: width 0.5s ease-in-out;
     border-radius: 5px;
-    
+
+  }
+
+
+  .gaugeText {
+    display: inline-block;
+    color: black;
+
+    font-size: 12px;
+    font-family: 'Cascadia Code';
+    font-weight: 350;
+    transform: scaleY(0.9);
+
+  }
+
+  .duoToggleSwitch {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #ccc;
+  cursor: pointer;
 }
 
+.active {
+  color: #fff;
+}
+
+.toggleHandle {
+  top: 5px;
+  width: 40px;
+  height: 30px;
+  border-radius: 20px;
+  background-color: #fff;
+  transition: left 0.2s ease-in-out;
+}
+
+.left {
+  left: 5px;
+}
+
+.right {
+  left: 155px;
+}

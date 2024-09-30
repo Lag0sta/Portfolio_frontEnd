@@ -1,0 +1,41 @@
+.mainContainer {
+  display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: flex-end;
+  color: white;
+}
+
+.loading{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 1s ease-out;
+  
+}
+
+.loading.fade-out {
+  opacity: 0;
+}
+
+
+.intro h1 {
+  font-family: "SDGlitch";
+  font-size: 10vh;
+  font-weight: initial;
+  margin-bottom: 0;
+
+}
+
+
+.intro span {
+  font-family: Cascadia Code;
+  font-size: 4vh;
+  font-weight: initial;
+
+}
+
+
+

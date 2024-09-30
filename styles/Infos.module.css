@@ -1,35 +1,42 @@
-.main {
+.main{
+  padding-top: 5vh;
+}
+
+.main h2 {
+  width: 100%;
+  font-family: 'SDGlitch';
+  font-size: 10vh;
+  font-weight: initial;
+  color: black;
+
+  text-align: center;
+  margin-top: 20px;
+
+}
+
+.infos {
     height: 100vh;
+    width: 100%;
     padding-left: 40px;
     padding-right: 40px;
     display: flex;
-    justify-content: center;
-
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 
-.skills {
-  display: flex;
-  flex-direction: column;
-}
-.skills img{
-  width: 80vh
-}
-
-.skills button {
-  height: 10vh;
-  width: 20vh;
-
-  font-family: 'Cascadia Code';
-  font-weight: 500;
-
-  background: none;
-  border-radius: 1px;
-  
-}
 
 .profil {
-    width : 35%
+  flex-basis: 50%;
+
+}
+
+.skills {
+  padding-left: 40px;
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .profil .portrait {
@@ -41,3 +48,223 @@
 .profil p {
   font-family: Cascadia Code;
 }
+
+.imgCv{
+  display: flex;
+  justify-content: center;
+}
+
+.btnCV {
+  height: 8vh;
+  width: 20vh;
+  clip-path: polygon(30% 0%, 100% 0%, 70% 100%, 0% 100%);
+
+  position: relative;
+  display: inline-block;
+
+  margin-left: 20px;
+  margin-top: 20px;
+  padding: 10px 20px;
+
+  background: none;
+  background-color: black;
+  border: none;
+  border-radius: 1px;
+
+  cursor: pointer;
+
+  font-family: 'Cascadia Code';
+  color: white;
+  font-size: 4vh;
+}
+
+.btnCV span {
+  position: relative;
+  z-index: 1;
+  font-family: 'Cascadia Code';
+  text-transform: uppercase;
+  animation: neon-flicker 2s infinite;
+}
+
+.btnCV span::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.btnCV span::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+}
+
+
+.skillDuoToggleSwitch {
+  display: flex;
+  flex-direction: column;
+}
+
+.btnToggleSwitch {
+  display: flex;
+  margin-left: 20px;
+}
+
+
+.active {
+  height: 6vh;
+  width: 15vh;
+  margin: 0;
+
+  color: #fff;
+  font-family: 'Cascadia Code';
+  font-size: 3.5vh;
+  font-weight: 800;
+
+  background: black;
+  border: none;
+  transition: left 0.5s ease-in-out;
+
+}
+
+.inactive {
+  height: 6vh;
+  width: 13vh;
+  margin: 0;
+
+  color: black;
+  font-family: 'Cascadia Code';
+  font-size: 2vh;
+  font-weight: 500;
+
+  background: none;
+  border: solid black 2px;
+  transition: left 0.5s ease-in-out;
+}
+
+.toggleLine {
+  width:100%;
+  position: relative;
+}
+
+.toggleHandle {
+  width: 1vh;
+  height: 1vh;
+  border-radius: 50%;
+  margin-left: 10px;
+
+  background-color: black;
+
+  position: absolute;
+  top: -10px;
+  left:50%;
+  transform: translateX(-50%) translateX(-100%);
+
+  transition: left 0.3s ease-in-out;
+}
+
+
+.left{
+  left: 60px;
+}
+
+.right{
+  left: calc(100% - 50px);
+}
+
+.modalContainer{
+  height: 80vh;
+  width: 100vh;
+
+  margin: 0;
+  padding:0;
+  position: fixed;
+  top: 55%;
+  left: 24.8%;
+  
+  transform: translate(-50%, -50%);
+  background-color:#000000;
+  margin-left: 20px;
+  box-shadow:    0 0 0 0.75px #222, /* outer border */
+  0 0 0 1.5px #333, /* inner border */
+  0 0 0 2.25px #444, /* shadow */
+  0 0 0 3px #555, /* shadow */
+  0 0 0 3.75px #666; /* shadow */  
+}
+.modalHeader {
+  height: 8vh;
+  background-color: #000;
+  border-bottom: solid white
+}
+
+.modalHeaderBtn{
+  height: 100%;
+  margin-left: 2vh;
+  margin-right: 2vh;
+
+  background-color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalBtn {
+  font-family: 'Cascadia Code';
+  color: white;
+
+  border: solid white 1px;
+  background-color: #000000;
+  padding: 1vh;
+}
+
+.modalView {
+  height: 72vh;
+  width: auto;
+  overflow-y: auto;
+}
+
+.modalView::-webkit-scrollbar {
+  width: 20px;
+  background-color: #000; /* black background */
+}
+
+.modalView::-webkit-scrollbar-thumb {
+  background-color: #ffffff; /* white thumb */
+  border: 1px solid #fff; /* white border */
+}
+
+.modalView::-webkit-scrollbar-track {
+  background-color: #000; /* black track */
+}
+
+.modalContent {
+  padding:0
+}
+
+.CV{
+  width: 100%;
+  height: auto;
+}
+
+.button {
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.buttonOpen {
+  background-color: #f194ff;
+}
+
+.modalText {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
