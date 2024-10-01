@@ -1,9 +1,19 @@
-import { useLayoutEffect } from 'react'
+
+import { useLayoutEffect, useState } from 'react'
 
 import styles from '../styles/Header.module.css'
 
+import { titleAnimation } from './titleAnimation';
 
-function Header({infoRef, portfolioRef, isOpen, contactRef},) {
+
+function Header({infoRef, portfolioRef, isOpen, contactRef, handleInfoClick, handlePortfolioClick, handleContactClick},) {
+
+  const [infoText, setInfoText] = useState('Info');
+  const [infoRandomText, setInfoRandomText] = useState('')
+  const [portfolioText, setPortfolioText] = useState('Portfolio');
+  const [portfolioRandomText, setPortfolioRandomText] = useState('')
+  const [contactText, setContactText] = useState('Contact');
+  const [contactRandomText, setContactRandomText] = useState('')
 
   //fonction Click scrollant la page vers le top
   function handleScrollAcceuil() {
@@ -20,8 +30,11 @@ function Header({infoRef, portfolioRef, isOpen, contactRef},) {
     console.log('Click')
     if (infoRef.current) {
       infoRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      handleInfoClick(true);
+      titleAnimation(infoText, setInfoRandomText)
     }
   }
+
 
    //fonction Click scrollant la page vers Portfolio
    function handleScrollPortfolio() {
@@ -30,6 +43,9 @@ function Header({infoRef, portfolioRef, isOpen, contactRef},) {
       portfolioRef.current.scrollIntoView({ behavior: 'smooth',
                                             block: 'start' 
                                          });
+      handlePortfolioClick(true);
+      titleAnimation(portfolioText, setPortfolioRandomText)
+
     }
   }
 
@@ -47,6 +63,9 @@ function Header({infoRef, portfolioRef, isOpen, contactRef},) {
       contactRef.current.scrollIntoView({ behavior: 'smooth',
                                           block: 'start'
                                        });
+      handleContactClick(true);
+      titleAnimation(contactText, setContactRandomText)
+
     }
   }
 
@@ -58,9 +77,9 @@ function Header({infoRef, portfolioRef, isOpen, contactRef},) {
            alt = 'logo'
            onClick = {handleScrollAcceuil}/>
         <nav className = {styles.btn}>
-          <button onClick = {handleScrollInfo}> Info </button> 
-          <button onClick = {handleScrollPortfolio}> Portfolio </button>
-          <button onClick = {handleScrollContact}> Contact </button> 
+          <button onClick = {handleScrollInfo}> {infoRandomText || infoText}</button> 
+          <button onClick = {handleScrollPortfolio}> {portfolioRandomText || portfolioText} </button>
+          <button onClick = {handleScrollContact}> {contactRandomText || contactText} </button> 
         </nav>
      
       </nav> 

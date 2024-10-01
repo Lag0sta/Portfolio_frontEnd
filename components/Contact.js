@@ -4,12 +4,33 @@ import emailjs from 'emailjs-com';
 
 import styles from '../styles/Contact.module.css'
 
-function Contact() {
+import { titleAnimation } from './titleAnimation';
+
+function Contact({contactClick, handleContactClick}) {
 
   const [email, setEmail] = useState('')
   const [object, setObject] = useState('')
   const [message, setMessage] = useState('')
 
+  const [text, setText] = useState('CONTACT');
+  const [randomText, setRandomText] = useState('')
+
+  //Au passage de la souris: activation de titleAnimation()
+  const handleMouseOver = () => {
+    console.log('Woush')
+    titleAnimation(text, setRandomText);
+  };
+
+  const handleMouseOut = () => {
+    setRandomText('');
+    
+  };
+
+  if (contactClick) {
+    console.log('titleAnimation Activated')
+    titleAnimation(text, setRandomText);
+    handleContactClick(false)
+  }
   const sendEmail = (e) => {
     emailjs.send(
       'service_0hntmxk',
@@ -56,7 +77,13 @@ function Contact() {
 
   return (
     <div className={styles.mainContainer}>
-      <h2>CONTACT</h2>
+       <h2 id='info' onMouseOver={() =>{
+                      handleMouseOver(); 
+                    }} 
+                    onMouseOut={handleMouseOut} 
+      >
+        {randomText || text}
+        </h2>
       <div className={styles.contact}>
         <input
           type='text'

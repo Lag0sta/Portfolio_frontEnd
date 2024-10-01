@@ -19,6 +19,26 @@ function Home() {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  const [infoClick, setInfoClick] = useState(false);
+  const [portfolioClick, setPortfolioClick] = useState(false);
+  const [contactClick, setContactClick] = useState(false)
+
+  //Modifie infoClick par Header.js et Infos.js
+  const handleInfoClick = (state) => {
+    console.log('click Info Title animation'+ infoClick)
+    setInfoClick(state);
+  };
+
+  const handlePortfolioClick = (state) => {
+    console.log('click Info Title animation'+ infoClick)
+    setPortfolioClick(state);
+  };
+
+  const handleContactClick = (state) => {
+    console.log('click Info Title animation'+ infoClick)
+    setContactClick(state);
+  };
+
   return (
 
     <div className={styles.mainContainer} >
@@ -29,6 +49,10 @@ function Home() {
           portfolioRef={portfolioRef}
           isOpen={isOpen}
           contactRef={contactRef}
+          handleInfoClick={handleInfoClick}
+          handlePortfolioClick={handlePortfolioClick}
+          handleContactClick={handleContactClick}
+
         />
       </div>
 
@@ -40,18 +64,26 @@ function Home() {
 
       <div className={styles.middleContainer}>
         <div className={styles.infos} ref={infoRef}>
-          <Infos />
+          <Infos 
+           infoClick={infoClick}
+           handleInfoClick={handleInfoClick}
+          />
         </div>
 
         <div className={styles.portfolio} ref={portfolioRef}>
-          <Portfolio />
+          <Portfolio 
+           portfolioClick={portfolioClick}
+           handlePortfolioClick={handlePortfolioClick}
+/>
         </div>
 
       </div>
 
 
       <div className={styles.footer} ref={contactRef}>
-        <Contact />
+        <Contact 
+         contactClick={contactClick}
+         handleContactClick={handleContactClick}/>
       </div>
     </div>
 
