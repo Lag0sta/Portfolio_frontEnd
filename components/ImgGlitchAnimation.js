@@ -13,8 +13,8 @@ function Glitch() {
   
   const generateRectangles = () => {
     const numRectangles = Math.floor(Math.random() * 6) + 7;
-    const containerWidth = containerRef.current.offsetWidth;
-    const containerHeight = containerRef.current.offsetHeight;
+    const containerWidth = containerRef.current ? containerRef.current.offsetWidth : 0;
+    const containerHeight = containerRef.current ? containerRef.current.offsetHeight : 0;
   
     const rectangles = Array(numRectangles).fill().map(() => {   
       const width = Math.random() * 90 + containerWidth / 20 + (Math.random() < 0.3 ? Math.random() * 150 : 0);

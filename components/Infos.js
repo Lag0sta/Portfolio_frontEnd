@@ -133,7 +133,7 @@ function Infos({ infoClick, handleInfoClick }) {
 
       <div className={styles.infos}>
         <div className={styles.profil}>
-          <div style={{height: '50vh', width: '50vh'}}
+          <div style={{height: '50vh', width: '50vh', borderRadius: '50%'}}
                onMouseOver={handleImgMouseOver}
                onMouseOut={handleImgMouseOut}
            >
