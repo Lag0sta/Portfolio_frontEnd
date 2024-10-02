@@ -28,6 +28,9 @@
 
 .profil {
   flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
 }
 
@@ -44,6 +47,26 @@
   border-radius: 50%;
   border: solid black 3px;
 }
+
+.profil .portraitGlitch {
+  height: 50vh;
+  border-radius: 50%;
+  border: solid rgba(0, 0, 0, 0.5) 3px;
+}
+
+.profil .portraitGlitchB {
+  height: 50vh;
+  border-radius: 50%;
+  border: solid 2px rgba(0, 255, 255, 0.5)
+}
+
+.profil .portraitGlitchR {
+  height: 50vh;
+  border-radius: 50%;
+  border: solid 2px rgba(255, 0, 255, 0.3)
+}
+
+
 
 .profil p {
   font-family: Cascadia Code;

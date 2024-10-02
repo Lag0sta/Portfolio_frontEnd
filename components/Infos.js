@@ -3,6 +3,8 @@ import { useState } from 'react'
 import styles from '../styles/Infos.module.css'
 import Skills from './Skills'
 import NeonFlickerEffect from './neonFlickerEffect'
+import CvModal from './CvModal'
+import ImgGlitchAnimation from './ImgGlitchAnimation'
 
 import { titleAnimation } from './titleAnimation'
 
@@ -14,9 +16,6 @@ function Infos({ infoClick, handleInfoClick }) {
 
   const [text, setText] = useState('ABOUT ME');
   const [randomText, setRandomText] = useState('')
-
-  const cvUrl = './assets/img/CV_LR_2025.jpg'
-  const filename = 'CV_LR_2025.jpg'
 
   //Au passage de la souris: activation de titleAnimation()
   const handleMouseOver = () => {
@@ -45,27 +44,85 @@ function Infos({ infoClick, handleInfoClick }) {
     setModalOpen(false)
   }
 
-  const handleDownload = () => {
-    if (window.confirm('Are you sure you want to download my Curriculum Vitae?')) {
-      const link = document.createElement('a');
-      link.href = cvUrl;
-      link.download = filename;
-      link.click();
-    }
-
-  }
-
   const handleTabChange = (tab, skills) => {
     setActive(tab);
     setSelectedSkills(skills);
   };
+  const [isImgMouseOver, setIsImgMouseOver] = useState(false);
 
+  const handleImgMouseOver = () => {
+    setIsImgMouseOver(true);
+  };
+
+  const handleImgMouseOut = () => {
+    setIsImgMouseOver(false);
+  };
+
+  let img;
+
+  if(isImgMouseOver){
+    img=(
+      <div className={styles.imgCv}>
+       
+            <ImgGlitchAnimation/>
+            <img className={styles.portraitGlitch} 
+                 src='/assets/img/portrait_color_NB.png' 
+                 alt='Portrait'
+                 style={{ position: 'absolute', zIndex: 1,
+                 }}
+
+                 />
+              <img className={styles.portraitGlitchR} 
+                 src='/assets/img/portrait_color_R.png' 
+                 alt='Portrait'
+                 style={{ position: 'absolute',
+                           left: 159,
+                           zIndex: 0,
+                           opacity: 1,
+                           mask: 'linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.4))', // add a gradient mask
+
+
+                 }}
+
+                 />
+                 <img className={styles.portraitGlitchB} 
+                 src='/assets/img/portrait_color_B.png' 
+                 alt='Portrait'
+                 style={{ position: 'absolute',
+                           left: 155.5,
+                           zIndex: 0,
+                           opacity: 0.8,
+                           mask: 'linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4))', // add a gradient mask
+
+                 }}
+
+                 />
+
+          </div>
+    )
+  }else{
+
+    img=(
+      <div className={styles.imgCv}
+           
+
+>
+    <img className={styles.portrait} 
+         src='/assets/img/portrait_color.png' 
+         alt='Portrait'
+         style={{ position: 'absolute'}}
+         />
+
+      </div>
+
+    )
+    
+  }
 
   return (
     <div className={styles.main} >
 
-      <h2 
-          id='info' 
+      <h2 id='info' 
           onMouseOver={() => {
             handleMouseOver();
           }}
@@ -76,10 +133,13 @@ function Infos({ infoClick, handleInfoClick }) {
 
       <div className={styles.infos}>
         <div className={styles.profil}>
-          <div className={styles.imgCv}>
-            <img className={styles.portrait} src='/assets/img/portrait_color.png' alt='Portrait' />
+          <div style={{height: '50vh', width: '50vh'}}
+               onMouseOver={handleImgMouseOver}
+               onMouseOut={handleImgMouseOut}
+           >
+          {img}
 
-          </div>
+           </div>
 
           <p>FullStack Develloper with illustration and Motion Graphics background, I have serious passion for UI effects and animations</p>
         </div>
@@ -113,8 +173,6 @@ function Infos({ infoClick, handleInfoClick }) {
               </button>
             </div>
 
-
-
           </div>
           <div className={styles.skills}>
             <Skills
@@ -131,33 +189,11 @@ function Infos({ infoClick, handleInfoClick }) {
           </button>
 
           {modalOpen && (
-            <div className={styles.modalContainer}>
-              {modalOpen && (
-                <div className={styles.modalHeader}>
-                  <div className={styles.modalHeaderBtn}>
-                    <button
-                      className={styles.modalBtn}
-                      onClick={() => {
-                        handleDownload()
-                      }}>Download</button>
-
-                    <button className={styles.modalBtn}
-                      onClick={closeModal}>Close</button>
-                  </div>
-                </div>
-              )}
-              {modalOpen && (
-                <div className={styles.modalView}>
-                  <div className={styles.modalContent} >
-                    <img
-                      src='./assets/img/CV_LR_2025.jpg'
-                      className={styles.CV} />
-                  </div>
-
-                </div>
-              )}
-
-            </div>
+            <CvModal
+             isOpen={modalOpen}
+             onClose={closeModal}
+            />
+           
           )}
 
 

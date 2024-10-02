@@ -58,7 +58,7 @@ function InteractifAnimation() {
       
         "particles": {
             "number": {
-                "value": 103,
+                "value": 200,
                 "density": {
                     "enable": false,
                     "value_area": 800
@@ -126,7 +126,7 @@ function InteractifAnimation() {
             "onhover": {
               "enable": true,
               "mode": "repulse",
-              'distance': 100000000,
+              'distance': 1,
             }
           },
         
