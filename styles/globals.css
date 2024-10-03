@@ -1,8 +1,15 @@
 @font-face {
   font-family: "SDGlitch";
   src: local("SDGlitch"),
-    url("../public/assets/fonts/SDGlitch.otf") format("opentype");
+       url("../public/assets/fonts/SDGlitch.otf") format("opentype");
   font-weight: contours;
+}
+
+@font-face {
+  font-family: "Cascadia Code";
+  src: local("Cascadia Code"),
+       url("../public/assets/fonts/CascadiaCodeNF-Regular.otf") format("opentype");
+       font-weight: normal;
 }
 
 body {
