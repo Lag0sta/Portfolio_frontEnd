@@ -44,8 +44,7 @@
 
 .profil .portrait {
   height: 50vh;
-  border-radius: 50%;
-  border: solid black 3px;
+  border-radius: 50%; 
 }
 
 .profil .portraitGlitch {

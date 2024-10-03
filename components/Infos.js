@@ -76,7 +76,8 @@ function Infos({ infoClick, handleInfoClick }) {
                  src='/assets/img/portrait_color_R.png' 
                  alt='Portrait'
                  style={{ position: 'absolute',
-                           left: 159,
+                          transform: 'translateX(0.5%)',
+                  
                            zIndex: 0,
                            opacity: 1,
                            mask: 'linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.4))', // add a gradient mask
@@ -89,7 +90,7 @@ function Infos({ infoClick, handleInfoClick }) {
                  src='/assets/img/portrait_color_B.png' 
                  alt='Portrait'
                  style={{ position: 'absolute',
-                           left: 155.5,
+                           transform: 'translateX(-0.5%)',
                            zIndex: 0,
                            opacity: 0.8,
                            mask: 'linear-gradient(to left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4))', // add a gradient mask
@@ -103,14 +104,14 @@ function Infos({ infoClick, handleInfoClick }) {
   }else{
 
     img=(
-      <div className={styles.imgCv}
+      <div className={`${styles.profil} ${styles.portrait}`}
            
 
 >
     <img className={styles.portrait} 
          src='/assets/img/portrait_color.png' 
          alt='Portrait'
-         style={{ position: 'absolute'}}
+         style={{ position: 'absolute', border:'solid black 3px'}}
          />
 
       </div>
