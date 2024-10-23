@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import styles from '../styles/Portfolio.module.css'
+import { motion } from 'framer-motion'
 
-import NeonFlickerEffect from './neonFlickerEffect'
 import { titleAnimation } from './titleAnimation';
 
 
-function Portfolio({handlePortfolioClick, portfolioClick}) {
+function Portfolio({ handlePortfolioClick, portfolioClick }) {
   const [text, setText] = useState('PORTFOLIO');
   const [randomText, setRandomText] = useState('')
 
@@ -17,7 +16,7 @@ function Portfolio({handlePortfolioClick, portfolioClick}) {
 
   const handleMouseOut = () => {
     setRandomText('');
-    
+
   };
 
   if (portfolioClick) {
@@ -26,29 +25,71 @@ function Portfolio({handlePortfolioClick, portfolioClick}) {
     handlePortfolioClick(false)
   }
 
-    return(
-        <div className={styles.main}>
-                    <h2 id='info' onMouseOver={() =>{
-                      handleMouseOver(); 
-                    }} 
-                    onMouseOut={handleMouseOut} 
-      >
-        {randomText || text}
-      </h2>
-        
-            <div style={{display: 'flex', flexDirection: 'row' ,justifyContent: 'center', paddingTop: '20vh'}}>
-            <h3 style={{fontFamily: 'Cascadia Code', color:'rgb(193, 193, 193)',fontSize: '4vh' ,textAlign: 'center'}}>_Coming Soon</h3>
-             <div className={styles.dots}>
-          <div className={styles.dot1}></div>
-          <div className={styles.dot2}></div>
-          <div className={styles.dot3}></div>
-            </div>
-             
-        </div>
-           
+  return (
+    <div className="flex flex-col justify-center ">
+      <div className="flex justify-center portrait:mt-24 landscape:xs:mt-8 landscape:sm:mt-8 landscape:md:mt-8 landscape:lg:mt-24 landscape:xl:mt-24 landscape:2xl:mt-24">
+        <h2 id='info'
+          onMouseOver={() => { handleMouseOver(); }}
+          onMouseOut={handleMouseOut}
+        >
+          {randomText || text}
+        </h2>
+      </div>
 
-        </div>
-    )
+
+      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', paddingTop: '20vh' }}>
+      <h3 style={{ fontFamily: 'Cascadia Code', color: 'rgb(193, 193, 193)', fontSize: '4vh', textAlign: 'center' }}>_Coming Soon</h3>
+          <div className="w-6 h-6 flex flex-row justify-between items-end ml-2">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: [0, 1, 0],
+                transition: {
+                  delay: 1,
+                  duration: 4,
+                  stagger: 1,
+                  repeat: Infinity,
+                  repeatDelay: 3,
+                },
+              }}
+
+              className="h-1 w-1 bg-gray-400"
+            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: [0, 1, 0],
+                transition: {
+                  delay: 2,
+                  duration: 4,
+                  stagger: 1,
+                  repeat: Infinity,
+                  repeatDelay: 3,                 
+                },
+              }}
+              className="h-1 w-1 bg-gray-400"
+            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: [0, 1, 0],
+                transition: {
+                  delay: 3,
+                  duration: 4,
+                  stagger: 1,
+                  repeat: Infinity,
+                  repeatDelay: 3,
+                },
+              }}
+              className="h-1 w-1 bg-gray-400"
+            />
+          </div>
+
+      </div>
+
+
+    </div>
+  )
 }
 
 export default Portfolio

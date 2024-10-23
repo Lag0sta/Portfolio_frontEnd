@@ -2,11 +2,9 @@ import { useState } from 'react'
 
 import emailjs from 'emailjs-com';
 
-import styles from '../styles/Contact.module.css'
-
 import { titleAnimation } from './titleAnimation';
 
-function Contact({contactClick, handleContactClick}) {
+function Contact({ contactClick, handleContactClick }) {
 
   const [email, setEmail] = useState('')
   const [object, setObject] = useState('')
@@ -23,7 +21,7 @@ function Contact({contactClick, handleContactClick}) {
 
   const handleMouseOut = () => {
     setRandomText('');
-    
+
   };
 
   if (contactClick) {
@@ -76,71 +74,76 @@ function Contact({contactClick, handleContactClick}) {
   const year = new Date().getFullYear();
 
   return (
-    <div className={styles.mainContainer}>
-       <h2 id='info' onMouseOver={() =>{
-                      handleMouseOver(); 
-                    }} 
-                    onMouseOut={handleMouseOut} 
-      >
-        {randomText || text}
+    <div className="h-full w-full bg-black">
+      <div className="flex justify-center portrait:mt-24 landscape:xs:mt-6 landscape:sm:mt-6 landscape:md:mt-6 landscape:lg:mt-24 landscape:xl:mt-24 landscape:2xl:mt-24">
+      <h2 className="text-white"
+          id='info'
+          onMouseOver={() => {
+            handleMouseOver();
+          }}
+          onMouseOut={handleMouseOut}
+        >
+          {randomText || text}
         </h2>
-      <div className={styles.contact}>
-        <input
-          type='text'
-          className={styles.email}
-          placeholder='enter your @mail adress'
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
+      </div>
+      
+      <div className="w-screen flex flex-col landscape:xs:flex-row landscape:sm:flex-row landscape:md:flex-row landscape:lg:flex-col landscape:xl:flex-col landscape:2xl:flex-col landscape:justify-center landscape:items-center">
+      <div className="landscape:w-1/3 flex flex-col justify-evenly items-center landscape:mr-6 ">
+        
+        <input className=""
+               type='text'
+               placeholder=' enter your @mail adress'
+               onChange={(e) => setEmail(e.target.value)}
+               value={email}
         />
-        <input
-          type='text'
-          className={styles.object}
-          placeholder='write your query here'
-          onChange={(e) => setObject(e.target.value)}
-          value={object}
+        <input type='text'
+               placeholder=' write your query here'
+               onChange={(e) => setObject(e.target.value)}
+               value={object}
         />
-        <input
+        <input className="h-[30vh]"
           type='text'
-          className={styles.msg}
-          placeholder='write your msg here'
+          placeholder=' write your msg here'
           onChange={(e) => setMessage(e.target.value)}
           value={message}
         />
-        <button onClick={sendEmail}>SEND</button>
+        <button className="h-12 w-20 mt-3 bg-black border border-white font-bold text-white text-opacity-80"
+          style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
+          onClick={sendEmail}
+        >
+          SEND
+        </button>
       </div>
-      <div style={{
-        padding: '15vh',
-        display: 'flex',
-        justifyContent: 'space-evenly',
-        paddingTop: '5vh',
-        paddingBottom: '3vh'
-      }}>
-        <img
+
+      <div className="w-full flex justify-evenly mt-20 landscape:xs:mt-0 landscape:sm:mt-0 landscape:md:mt-0 landscape:lg:mt-14 landscape:xl:mt-14 landscape:2xl:mt-14 landscape:xs:ml-6 landscape:sm:ml-6 landscape:md:ml-6 landscape:lg:ml-0 landscape:xl:ml-0 landscape:2xl:ml-0 landscape:xs:w-fit landscape:sm:w-fit landscape:md:w-fit landscape:lg:w-full landscape:xl:w-full landscape:2xl:w-full landscape:xs:flex-col landscape:sm:flex-col landscape:md:flex-col landscape:lg:flex-row landscape:xl:flex-row landscape:2xl:flex-row landscape:xs:justify-between landscape:sm:justify-between landscape:md:justify-between landscape:lg:justify-evenly landscape:xl:justify-evenly landscape:2xl:justify-evenly"
+      >
+        <img className="landscape:xs:mb-5 landscape:sm:mb-5 landscape:md:mb-0 landscape:lg:mb-0 landscape:xl:mb-0 landscape:2xl:mb-0"
           src='/assets/img/linkedin-in-brands-solid.svg'
           alt='Logo LinkedIn'
           style={{ height: '8vh' }}
           onClick={handleClickLinkedin}
         />
-        <img
+        <img className="landscape:xs:my-5 landscape:sm:my-5 landscape:md:my-0 landscape:lg:my-0 landscape:xl:my-0 landscape:2xl:my-0"
           src='/assets/img/github-brands-solid.svg'
           alt='Logo Artstation'
           style={{ height: '8vh', filter: 'invert(1)' }}
           onClick={handleClickGithub}
         />
-        <img
+        <img className="landscape:xs:my-5 landscape:sm:my-5 landscape:md:my-0 landscape:lg:my-0 landscape:xl:my-0 landscape:2xl:my-0"
           src='/assets/img/instagram-brands-solid.svg'
           alt='Logo Instagram'
           style={{ height: '8vh', filter: ' invert(1)' }}
           onClick={handleClickInstagram}
         />
-        <img
+        <img className="landscape:xs:mt-5 landscape:sm:mt-5 landscape:md:mt-0 landscape:lg:mt-0 landscape:xl:mt-0 landscape:2xl:mt-0"
           src='/assets/img/artstation-brands-solid.svg'
           alt='Logo Artstation'
           style={{ height: '8vh', filter: 'white' }}
           onClick={handleClickArtstation}
         />
       </div>
-      <p style={{ color: 'white', textAlign: 'center'}}>&copy; {year} Leo Ronnet. All rights reserved.</p>
+      </div>
+      <p className="text-xs text-white text-center mt-5 landscape:xs:mt-32 landscape:sm:mt-32 landscape:md:mt-32 landscape:lg:mt-10 landscape:xl:mt-10 landscape:2xl:mt-10">&copy; {year} Leo Ronnet. All rights reserved.</p>
 
     </div>
   )

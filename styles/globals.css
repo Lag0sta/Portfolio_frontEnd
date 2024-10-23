@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
   font-family: "SDGlitch";
   src: local("SDGlitch"),
@@ -12,6 +16,11 @@
        font-weight: normal;
 }
 
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -19,6 +28,42 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-* {
-  box-sizing: border-box;
+h1, h2 {
+  font-family: "SDGlitch";
+  font-weight: initial;
+}
+
+h1 {
+  @apply text-7xl landscape:text-8xl mb-0
+}
+
+h2 {
+  @apply portrait:text-6xl landscape:text-7xl w-fit 
+}
+
+span, p {
+  font-family: "Cascadia Code";
+}
+
+button {
+    clip-path: polygon(25% 0%, 35% 10%, 100% 10%, 100% 100%, 0% 100%, 0% 0%);
+    background-color: #333;
+    border-radius: 3px;
+    padding: 1vh;
+  
+    font-family: "Cascadia Code";
+    color: white;
+}
+
+input {
+  margin: 5px;
+  width: 85%;
+  color: white;
+  background-color: black;
+  border: 1px solid white;
+}
+
+input:placeholder {
+  font-family: 'Cascadia Code';
+  color:rgba(250,250,250,0.8);
 }

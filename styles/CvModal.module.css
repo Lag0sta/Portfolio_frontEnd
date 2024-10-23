@@ -1,12 +1,12 @@
 .modalContainer{
-  height: 80vh;
-  width: 100vh;
+  height: 60vh;
+  width: 100%;
 
   margin: 0;
   padding:0;
   position: fixed;
-  top: 55%;
-  left: 24.8%;
+  top: 41.5%;
+  left: 45%;
   
   transform: translate(-50%, -50%);
   background-color:#000000;
@@ -23,21 +23,7 @@
   border-bottom: solid white
 }
 
-.modalHeaderBtn{
-  height: 100%;
-  margin-left: 2vh;
-  margin-right: 2vh;
-
-  background-color: #000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .modalBtn {
-  font-family: 'Cascadia Code';
-  color: white;
-
   border: solid white 1px;
   background-color: #000000;
   padding: 1vh;
@@ -63,10 +49,6 @@
   background-color: #000; /* black track */
 }
 
-.modalContent {
-  padding:0
-}
-
 .CV{
   width: 100%;
   height: auto;
@@ -77,13 +59,3 @@
   padding: 10px 20px;
   cursor: pointer;
 }
-
-.buttonOpen {
-  background-color: #f194ff;
-}
-
-.modalText {
-  margin-bottom: 15px;
-  text-align: center;
-}
-

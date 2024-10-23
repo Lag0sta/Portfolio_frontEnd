@@ -4,6 +4,12 @@ const nextConfig = {
   images: {
     domains: [],
   },
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
 };
 
 module.exports = nextConfig;

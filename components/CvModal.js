@@ -19,21 +19,21 @@ const CvModal = ({ isOpen, onClose, onDownload }) => {
         <div className={styles.modalContainer}>
           {isOpen && (
             <div className={styles.modalHeader}>
-              <div className={styles.modalHeaderBtn}>
-                <button
-                  className={styles.modalBtn}
-                  onClick={handleDownload}
+              <div className=" mx-2 bg-black flex justify-between align-center">
+                <button className=" pl-[10px] cursor-pointer border-1 border-solid border-white bg-white text-black"
+                        onClick={handleDownload}
                 >
                   Download
                 </button>
-                <button className={styles.modalBtn} onClick={onClose}>
+                <button className="pl-[10px] cursor-pointer border-1 border-solid border-white bg-white text-black"
+                        onClick={onClose}>
                   Close
                 </button>
               </div>
             </div>
           )}
           {isOpen && (
-            <div className={styles.modalView}>
+            <div className="h-[72%]">
               <div className={styles.modalContent}>
                 <img
                   src='./assets/img/CV_LR_2025.jpg'

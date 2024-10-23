@@ -1,109 +1,105 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, {
+  useState,
+  useRef,
+  useLayoutEffect
+} from 'react';
 
+import styles from '../styles/ImgGlitchAnimation.module.css'
 
 function ImgGlitchAnimation() {
 
   const [rectangles, setRectangles] = useState([]);
   const containerRef = useRef(null);
-  
-  useEffect(() => {
-    const intervalId = setInterval(generateRectangles, 75);
-    return () => clearInterval(intervalId);
+
+  const intervalMS = 75;
+  const containerWidthRatio = 20;
+  const containerHeightRatio = 20;
+  const rectangleCountMin = 7;
+  const rectangleCountMax = 13;
+
+  useLayoutEffect(() => {
+
+
+    if (containerRef.current) {
+      //Permet de générer les rectangles à interval régulier
+      const intervalId = setInterval(generateRectanglesArr, intervalMS);
+      return () => clearInterval(intervalId);
+
+      //Permet de générer des dimensions width & height aléatoires
+      function generateRectangleDimensions() {
+        const width = Math.random() * 90 + containerRef.current.offsetWidth / containerWidthRatio;
+        const height = Math.random() * 30 + containerRef.current.offsetHeight / containerHeightRatio;
+        return { width, height };
+      };
+
+      //Permet de générer des positions X & Y aléatoires pour les rectangles
+      function generateRectanglePosition(rectangle) {
+        const left = Math.floor(Math.random() * (containerRef.current.offsetWidth - rectangle.width));
+        const top = Math.floor(Math.random() * (containerRef.current.offsetHeight - rectangle.height));
+        return { left, top };
+      };
+
+      //Permet de générer [rectangles + positionsRectangles + dimensionsRectangles] de manière aléatoire
+      function generateRectanglesArr() {
+        const numRectangles = Math.floor(Math.random() * (rectangleCountMax - rectangleCountMin + 1)) + rectangleCountMin;
+        const rectangles = Array(numRectangles).fill().map(() => {
+          const dimensions = generateRectangleDimensions();
+          const position = generateRectanglePosition(dimensions);
+          return { ...dimensions, ...position };
+        });
+        setRectangles(rectangles);
+      };
+
+
+
+    }
+
   }, []);
-  
-  const generateRectangles = () => {
-    const numRectangles = Math.floor(Math.random() * 6) + 7;
-    const containerWidth = containerRef.current ? containerRef.current.offsetWidth : 0;
-    const containerHeight = containerRef.current ? containerRef.current.offsetHeight : 0;
-  
-    const rectangles = Array(numRectangles).fill().map(() => {   
-      const width = Math.random() * 90 + containerWidth / 20 + (Math.random() < 0.3 ? Math.random() * 150 : 0);
-      const height = Math.random() * 30 + containerHeight / 20 + (Math.random() < 0.3 ? Math.random() * 50 : 0);
-      const left = Math.floor(Math.random() * (containerWidth - width));
-      const top = Math.floor(Math.random() * (containerHeight - height));
-      return { width, height, left, top };
-    });
-  
-    setRectangles(rectangles);
-  };
- 
+
+
+
+
+
 
 
   return (
     <div>
-      <div ref={containerRef} style={{ position: 'relative', width: '50vh', height: '50vh', }}>
-        {rectangles.map((rectangle, index) => {
-          const newX = rectangle.left + (Math.random() - 0.5) * 0.01 * rectangle.width;
-          return (
-            <div 
-             key={index}
-             style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              zIndex: 30,
-            }}>
-              <img
-                src="/assets/img/portrait_color.png"
-                alt="Glitch Image"
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
-                  clipPath: `inset(${rectangle.top}px ${containerRef.current.offsetWidth - newX - rectangle.width}px ${containerRef.current.offsetHeight - rectangle.top - rectangle.height}px ${newX}px)`,
-                  zIndex: 30,
-                  opacity: 0.9,
-                  borderRadius: '50%',
-                  mask: 'linear-gradient(to left, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1))blur(1px)', // add a gradient mask
-                }}
-              />
-              <img
-                src="/assets/img/portrait_color_B.png"
-                alt="Glitch Image"
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: -1.5,
-                  width: '100%',
-                  height: '100%',
-                  clipPath: `inset(${rectangle.top}px ${containerRef.current.offsetWidth - newX - rectangle.width}px ${containerRef.current.offsetHeight - rectangle.top - rectangle.height}px ${newX}px)`,
-                  zIndex: 29,
-                  opacity: 0.8,
-                  borderRadius: '50%',
+      <div ref={containerRef} className="relative w-64 h-64 landscape:xs:w-32 landscape:sm:w-32 landscape:md:w-32 landscape:lg:w-64 landscape:xl:w-64 landscape:2xl:w-64 landscape:xs:h-32 landscape:sm:h-32 landscape:md:h-32 landscape:lg:h-64 landscape:xl:h-64 landscape:2xl:h-64">
+        {rectangles.map((rectangle, index) => (
+          <div key={index} className="absolute top-0 left-0 w-full h-full z-2 rounded-full">
+            <img className={`${styles.img} ${styles.imgGlitch}`}
+              style={{ clipPath: `inset(${rectangle.top}px ${containerRef.current.offsetWidth - rectangle.left - rectangle.width}px ${containerRef.current.offsetHeight - rectangle.top - rectangle.height}px ${rectangle.left}px)` }}
+              src="/assets/img/portrait_color.png"
+              alt="Main Glitch"
 
-                  mask: 'linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0))', // add a gradient mask
-                }}
-              />
-              <img
-                src="/assets/img/portrait_color_R.png"
-                alt="Glitch Image"
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 1.5,
-                  width: '100%',
-                  height: '100%',
-                  clipPath: `inset(${rectangle.top}px ${containerRef.current.offsetWidth - newX - rectangle.width}px ${containerRef.current.offsetHeight - rectangle.top - rectangle.height}px ${newX}px)`,
-                  zIndex: 29,
-                  opacity: 0.8,
-                  borderRadius: '50%',
+            />
+            <img className={`${styles.img} ${styles.imgGlitchB}`}
+              style={{ clipPath: `inset(${rectangle.top}px ${containerRef.current.offsetWidth - rectangle.left - rectangle.width}px ${containerRef.current.offsetHeight - rectangle.top - rectangle.height}px ${rectangle.left}px)` }}
+              src="/assets/img/portrait_color_B.png"
+              alt="Blue Glitch"
 
-
-                  mask: 'linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1))', // add a gradient mask
-                }}
-              />
-            </div>
-          );
-        })}
+            />
+            <img className={`${styles.img} ${styles.imgGlitchR}`}
+              style={{ clipPath: `inset(${rectangle.top}px ${containerRef.current.offsetWidth - rectangle.left - rectangle.width}px ${containerRef.current.offsetHeight - rectangle.top - rectangle.height}px ${rectangle.left}px)` }}
+              src="/assets/img/portrait_color_R.png"
+              alt="Red Glitch"
+            />
+          </div>
+        ))}
+        <img className={`${styles.img} ${styles.portrait}`}
+          src="/assets/img/portrait_color_NB.png"
+          alt="Portrait Grey"
+        />
+        <img className={`${styles.img} ${styles.portraitR}`}
+          src="/assets/img/portrait_color_R.png"
+          alt="Portrait Red"
+        />
+        <img className={`${styles.img} ${styles.portraitB}`}
+          src="/assets/img/portrait_color_B.png"
+          alt="Portrait Blue"
+        />
       </div>
-
     </div>
-
-
   );
 }
 
