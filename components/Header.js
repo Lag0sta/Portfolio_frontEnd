@@ -129,7 +129,7 @@ function Header({
 
 
   return (
-    <div className='border pointer-events-none'>
+    <div className='pointer-events-none'>
       <nav className="absolute z-20 flex justify-between items-center landscape:xs:h-screen landscape:sm:h-screen landscape:md:h-screen landscape:lg:h-24 landascape:xl:h-24 landscape:2xl:h-24 w-screen portrait:p-2 landscape:lg:px-10 landscape:xl:px-10 landscape:2xl:px-10 pointer-events-none">
         <img className="portrait:w-20 landscape:xs:w-24 landscape:sm:w-24 landscape:md:w-24 landscape:lg:w-16 landscape:xl:w-16 landscape:2xl:w-16 landscape:xs:ml-2 landscape:sm:ml-2 landscape:md:ml-2 pointer-events-auto"
           src='/assets/img/logo.png'
