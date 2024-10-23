@@ -61,7 +61,7 @@ function Home() {
         </div>
       
         {/* intro-container */}
-        <div className="w-full col-start-1 col-end-5 row-start-1 row-end-2 max-h-screen bg-black z-0 " >
+        <div className="w-full col-start-1 col-end-5 row-start-1 row-end-2 max-h-screen min-h-screen bg-black z-0 " >
           <Intro isOpen={isOpen}
                  setIsOpen={setIsOpen}
           />

@@ -44,7 +44,7 @@ function Intro({
     
     return (
         <div className = "w-full h-full flex justify-start align-end text-white relative">
-            <div className = "flex justify-center items-center h-full absolute w-full h-full transition-opacity duration-1000 ease-out">
+            <div className = "flex justify-center items-center h-screen l absolute w-full h-full transition-opacity duration-1000 ease-out">
                 {isLoading && <LoadingAnimation className="  w-[50%]"/>}
                 {showInteractifAnimation && <InteractifAnimation className="z-0"/>}
             </div>
