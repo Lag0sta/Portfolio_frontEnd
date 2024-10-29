@@ -3,10 +3,9 @@ import {
   useState,
   useEffect
 } from 'react'
-import { motion } from 'framer-motion'
+
 import { titleAnimation } from './titleAnimation'
 
-import styles from '../styles/Infos.module.css'
 import Skills from './Skills'
 import NeonFlickerEffect from './neonFlickerEffect'
 import CvModal from './CvModal'
@@ -15,14 +14,16 @@ import ImgGlitchAnimation from './ImgGlitchAnimation'
 
 function Infos({
   infoClick,
-  handleInfoClick
+  handleInfoClick,
+  openModal,
+  closeModal,
+  isModalOpen
 }) {
   //variable d'Etat indicant si le toggle sera à gauche ou à droite
-  const [selectedSkills, setSelectedSkills] = useState([]);
-  const [modalOpen, setModalOpen] = useState(false);
   const [text, setText] = useState('ABOUT ME');
   const [randomText, setRandomText] = useState('')
   const [isImgMouseOver, setIsImgMouseOver] = useState(false)
+  
 
   //Reception et reset de la valeur de infoClick de Home.js activé par HandleInfoClick() dans Header.js
   //+ Activation de titleAnimation()
@@ -52,18 +53,12 @@ function Infos({
     setIsImgMouseOver(false);
   };
 
-  function openModal() {
-    setModalOpen(true)
-  }
-
-  function closeModal() {
-    setModalOpen(false)
-  }
+ 
 
   return (
-    <div classname="w-full h-full border">
+    <div classname="w-[full] h-full ">
 
-      <div className=" flex justify-center mt-24 landscape:xs:mt-8 landscape:sm:mt-8 landscape:md:mt-8 landscape:lg:mt-24 landscape:xl:mt-24 landscape:2xl:mt-24">
+      <div className=" flex justify-center mt-24 landscape:xs:mt-8 landscape:lg:mt-24">
         <h2 className=""
           id='info'
           onMouseOver={() => { handleMouseOver() }}
@@ -73,9 +68,9 @@ function Infos({
         </h2>
       </div>
 
-      <div className="h-full w-full px-5 flex flex-row flex-wrap justify-evenly landscape:justify-center ">
-        <div className="h-fit w-fit mt-2 flex flex-col justify-center landscape:mt-3  landscape:mr-5 landscape:md:mr-10">
-          <div className=" w-64 h-64 mx-auto landscape:xs:w-3632 landscape:sm:w-36 landscape:md:w-36 landscape:lg:w-64 landscape:xl:w-64 landscape:2xl:w-64 landscape:xs:h-32 landscape:sm:h-32 landscape:md:h-32 landscape:lg:h-64 landscape:xl:h-64 landscape:2xl:h-64 landscape:md:mt-4"
+      <div className="h-full w-full px-5 flex flex-row flex-wrap justify-evenly landscape:justify-center landscape:w-[74%] landscape:px-0 landscape:translate-x-[17.55%] ">
+        <div className="h-fit w-fit mt-2 flex flex-col justify-center landscape:w-[30%]   landscape:mt-3">
+          <div className=" portrait:xs:w-56 portrait:xs:h-56 portrait:lg:w-64 portrait:lg:h-64 mx-auto landscape:xs:w-32 landscape:lg:w-64  landscape:xs:h-32 landscape:lg:h-64 landscape:xs:mt-2"
             onMouseOver={handleImgMouseOver}
             onTouchStart={handleImgMouseOver}
             onMouseOut={handleImgMouseOut}
@@ -93,16 +88,16 @@ function Infos({
             )}
           </div>
           <div>
-          <p className="portrait:text-sm portrait:w-full landscape:text-xs landscape:md:text-sm landscape:w-40 landscape:md:w-64 mt-4 landscape:mt-5">FullStack Develloper with illustration and Motion Graphics background, I have serious passion for UI effects and animations</p>
+          <p className="portrait:xs:text-sm portrait:lg:text-base portrait:xs:w-56 portrait:lg:w-64 landscape:xs:text-xs landscape:lg:text-sm landscape:w-fit landscape:md:fit mt-4 landscape:mt-5 ">FullStack Develloper with illustration and Motion Graphics background, I have serious passion for UI effects and animations</p>
 
           </div>
           
         </div>
 
-        <div className="w-fit h-fit flex flex-col justify-evenly flex-wrap mt-10 landscape:mt-4 landscape:ml-5">
+        <div className="w-fit h-fit flex flex-col justify-evenly flex-wrap mt-10 landscape:xq:w-[64%] landscape:mt-4 landscape:lg:ml-10">
           <Skills/>
           <div className="flex justify-end ">
-            <button className=" w-12 h-10 landscape:w-10 landscape:h-8 landscape:md:w-12 landscape:md:h-10 mt-2 cursor-pointer"
+            <button className=" w-12 h-10 landscape:w-10 landscape:h-8 landscape:lg:w-12 landscape:lg:h-10 mt-2 cursor-pointer"
               onClick={() => openModal()}
               onTouchStart={() => openModal()}
             >
@@ -115,13 +110,14 @@ function Infos({
 
 
 
-        {modalOpen && (
+       
+      </div>
+      {isModalOpen && (
           <CvModal
-            isOpen={modalOpen}
-            onClose={closeModal}
+            closeModal={closeModal}
+            isModalOpen={isModalOpen}
           />
         )}
-      </div>
 
     </div>
   )

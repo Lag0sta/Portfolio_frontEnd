@@ -12,11 +12,9 @@ import { titleAnimation } from './titleAnimation';
 function Header({
   infoRef,
   portfolioRef,
-  isOpen,
+  isActif,
   contactRef,
-  handleInfoClick,
-  handlePortfolioClick,
-  handleContactClick
+  isModalOpen
 },) {
 
   const [infoText, setInfoText] = useState('Info');
@@ -52,18 +50,6 @@ function Header({
     query: '(min-width: 1536px)'
   });
 
-  //fonction Click scrollant la page vers X + activation d'animation
-
-  function scroll(ref, text, setText) {
-    if (ref.current) {
-      ref.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-      titleAnimation(text, setText);
-    }
-  };
-
   //fonction Click scrollant la page vers le top
   const handleScrollAcceuil = () => {
     console.log('Acceuil Click')
@@ -75,26 +61,41 @@ function Header({
 
   //fonction Click scrollant la page vers Infos
   function handleScrollInfo() {
-    scroll(infoRef, infoText, setInfoRandomText);
-    handleInfoClick(true);
+    if (infoRef.current) {
+      window.scrollTo({
+        top: infoRef.current.offsetTop,
+        behavior: 'smooth'
+      });
+      titleAnimation(infoText, setInfoRandomText);
+    }
   };
 
 
   //fonction Click scrollant la page vers Portfolio
   function handleScrollPortfolio() {
-    scroll(portfolioRef, portfolioText, setPortfolioRandomText);
-    handlePortfolioClick(true);
+    if (portfolioRef.current) {
+      window.scrollTo({
+        top: portfolioRef.current.offsetTop,
+        behavior: 'smooth'
+      });
+      titleAnimation(portfolioText, setPortfolioRandomText);
+    }
   }
 
   //Permet de lancer l'auto scroll de la page uniquement lorsque l'animation est lancé
   useLayoutEffect(() => {
-    if (isOpen) handleScrollPortfolio();
-  }, [isOpen]);
+    if (isActif) handleScrollPortfolio();
+  }, [isActif]);
 
   // Fonction click scrollant la page vers Contact
   function handleScrollContact() {
-    scroll(contactRef, contactText, setContactRandomText);
-    handleContactClick(true);
+    if (contactRef.current) {
+      window.scrollTo({
+        top: contactRef.current.offsetTop,
+        behavior: 'smooth'
+      });
+      titleAnimation(contactText, setContactRandomText);
+    }
   }
 
   useEffect(() => {
@@ -109,9 +110,9 @@ function Header({
         setHeader(
           <div>
           <div className="w-screen flex justify-between pointer-events-none">
-            <div className="h-screen w-28 px-0 mt-0 bg-gradient-to-r from-black/95 to-black/45 p-1.7vh z-999 py-0 backdrop-filter backdrop-blur-sm border-r border-white border-opacity-70 pointer-events-none" />
+            <div className="h-screen w-[13%] px-0 mt-0 bg-gradient-to-r from-black/95 to-black/45 p-1.7vh py-0 backdrop-filter backdrop-blur-sm border-r border-white border-opacity-70 pointer-events-none" />
 
-          <div className="h-screen w-28 px-0 mt-0 bg-gradient-to-l from-black/90 to-black/55 p-1.7vh z-999 py-0 backdrop-filter backdrop-blur-sm border-l border-white border-opacity-70 pointer-events-none"
+          <div className="h-screen w-[13%] px-0 mt-0 bg-gradient-to-l from-black/90 to-black/55 p-1.7vh py-0 backdrop-filter backdrop-blur-sm border-l border-white border-opacity-70 pointer-events-none"
           />
         </div>
         </div>
@@ -130,29 +131,29 @@ function Header({
 
   return (
     <div className='pointer-events-none'>
-      <nav className="absolute z-20 flex justify-between items-center landscape:xs:h-screen landscape:sm:h-screen landscape:md:h-screen landscape:lg:h-24 landascape:xl:h-24 landscape:2xl:h-24 w-screen portrait:p-2 landscape:lg:px-10 landscape:xl:px-10 landscape:2xl:px-10 pointer-events-none">
-        <img className="portrait:w-20 landscape:xs:w-24 landscape:sm:w-24 landscape:md:w-24 landscape:lg:w-16 landscape:xl:w-16 landscape:2xl:w-16 landscape:xs:ml-2 landscape:sm:ml-2 landscape:md:ml-2 pointer-events-auto"
+      <nav className="w-screen absolute pointer-events-none z-10   flex justify-between items-center landscape:xs:h-screen landscape:lg:h-24  portrait:p-2 landscape:lg:px-10 ">
+        <img className={`portrait:w-20 landscape:xs:w-24 landscape:lg:w-16 landscape:xs:ml-2 ${isModalOpen ? 'pointer-events-none' : 'pointer-events-auto'}`}
           src='/assets/img/logo.png'
           alt='logo'
           onClick={handleScrollAcceuil}
           onTouchStart={handleScrollAcceuil}
 
         />
-        <nav className="flex justify-around portrait:justify-evenly landscape:xs:h-full landscape:sm:h-full landscape:md:h-full landscape:lg:h-fit landscape:xl:h-fit landscape:2xl:h-fit landscape:xs:w-28 landscape:sm:w-28 landscape:md:w-28 landscape:lg:mt-1 landscape:xl:mt-1 landscape:2xl:mt-1 landscape:lg:w-fit landscape:xl:w-fit landscape:2xl:w-fit landscape:lg:mx-12 landscape:xl:mx-12 landscape:2xl:mx-12 landscape:xs:flex-col landscape:sm:flex-col landscape:md:flex-col landscape:lg:flex-row landscape:xl:flex-row landscape:2xl:flex-row landscape:xs:items-center landscape:sm:items-center landscape:md:items-center pointer-events-auto">
-          <button className="bg-[#333] bg-opacity-80 portrait:mr-2 landscape:lg:mx-2 landscape:xl:mx-2 landscape:2xl:mx-2"
+        <nav className={`flex justify-around portrait:justify-evenly landscape:xs:h-full landscape:lg:h-fit landscape:xs:w-28 landscape:lg:mt-1 landscape:lg:w-fit landscape:lg:mx-12 landscape:xs:flex-col landscape:lg:flex-row landscape:xs:items-center ${isModalOpen ? 'pointer-events-none' : 'pointer-events-auto'}`}>
+          <button className="bg-[#333] bg-opacity-80 portrait:mr-2 landscape:lg:mx-2"
             onClick={handleScrollInfo}
             onTouchStart={handleScrollInfo}
           >
 
             {infoRandomText || infoText}
           </button>
-          <button className="bg-[#333] bg-opacity-80 portrait:mr-2 landscape:lg:mx-2 landscape:xl:mx-2 landscape:2xl:mx-2 "
+          <button className="bg-[#333] bg-opacity-80 portrait:mr-2 landscape:lg:mx-2"
             onClick={handleScrollPortfolio}
             onTouchStart={handleScrollPortfolio}
           >
             {portfolioRandomText || portfolioText}
           </button>
-          <button className="bg-[#333] bg-opacity-80 portrait:mr-2 landscape:lg:mx-2 landscape:xl:mx-2 landscape:2xl:mx-2"
+          <button className="bg-[#333] bg-opacity-80 portrait:mr-2 landscape:lg:mx-2 "
             onClick={handleScrollContact}
             onTouchStart={handleScrollContact}
 
@@ -161,7 +162,7 @@ function Header({
           </button>
         </nav>
       </nav>
-      <div className="px-0 mt-0 p-1.7vh z-999 py-0 pointer-events-none">
+      <div className="px-0 mt-0 p-1.7vh py-0 pointer-events-none">
         {header}
 
 

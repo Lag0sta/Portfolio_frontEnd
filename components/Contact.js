@@ -87,7 +87,7 @@ function Contact({ contactClick, handleContactClick }) {
         </h2>
       </div>
       
-      <div className="w-screen flex flex-col landscape:xs:flex-row landscape:sm:flex-row landscape:md:flex-row landscape:lg:flex-col landscape:xl:flex-col landscape:2xl:flex-col landscape:justify-center landscape:items-center">
+      <div className="w-full flex flex-col landscape:xs:flex-row landscape:sm:flex-row landscape:md:flex-row landscape:lg:flex-col landscape:xl:flex-col landscape:2xl:flex-col landscape:justify-center landscape:items-center">
       <div className="landscape:w-1/3 flex flex-col justify-evenly items-center landscape:mr-6 ">
         
         <input className=""

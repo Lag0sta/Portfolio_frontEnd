@@ -8,8 +8,8 @@ import LoadingAnimation from './LoadingAnimation'
 import InteractifAnimation from './InteractifAnimation';
 
 function Intro({
-    isOpen, 
-    setIsOpen,
+    isActif, 
+    setIsActif,
 }) {
 
     const [isLoading, setIsLoading] = useState(true);
@@ -39,7 +39,7 @@ function Intro({
     //Fonction activant l'animation du chevron
     const handleChevronAnimation = () => {
         console.log('Click')
-        setIsOpen(true);
+        setIsActif(true);
     }
     
     return (
@@ -57,9 +57,9 @@ function Intro({
                 <motion.div
                     className = "mask z-1"
                     initial = "closed"
-                    animate = {isOpen ? "open" : "closed"}
+                    animate = {isActif ? "open" : "closed"}
                     variants = {variants}
-                    onAnimationComplete = {() => {setIsOpen(false);}}
+                    onAnimationComplete = {() => {setIsActif(false);}}
                     transition={{
                         duration: 0.2,
                         ease: "easeInOut",

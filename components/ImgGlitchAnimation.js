@@ -64,7 +64,7 @@ function ImgGlitchAnimation() {
 
   return (
     <div>
-      <div ref={containerRef} className="relative w-64 h-64 landscape:xs:w-32 landscape:sm:w-32 landscape:md:w-32 landscape:lg:w-64 landscape:xl:w-64 landscape:2xl:w-64 landscape:xs:h-32 landscape:sm:h-32 landscape:md:h-32 landscape:lg:h-64 landscape:xl:h-64 landscape:2xl:h-64">
+      <div ref={containerRef} className="relative portrait:xs:w-56 portrait:xs:h-56 portrait:lg:w-64 portrait:lg:h-64 landscape:xs:w-32 landscape:lg:w-64 landscape:xs:h-32  landscape:lg:h-64">
         {rectangles.map((rectangle, index) => (
           <div key={index} className="absolute top-0 left-0 w-full h-full z-2 rounded-full">
             <img className={`${styles.img} ${styles.imgGlitch}`}
