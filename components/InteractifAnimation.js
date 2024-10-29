@@ -271,7 +271,7 @@ function InteractifAnimation() {
                   "mode": "repulse",
                   'distance': 1,
                 },
-                "onPress": {
+                "onTouch": {
                   "enable": true,
                   "mode": "repulse",
                   'distance': 1,

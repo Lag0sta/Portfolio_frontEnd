@@ -55,7 +55,7 @@ function Home() {
     >
         
       {/* main-container */}
-      <div className="max-w-full h-full mx-0 grid grid-cols-4 grid-rows-4  md-blur relative  bg-black overflow-y-hidden" >
+      <div className="max-w-full h-full mx-0 grid grid-cols-4 grid-rows-4  md-blur relative  bg-black" >
 
         {/* Header-container */}
         <div className= {`fixed pointer-events-none ${isModalOpen ? "z-48" : "z-50"}`}>

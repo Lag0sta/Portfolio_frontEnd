@@ -48,11 +48,11 @@ function Intro({
                 {isLoading && <LoadingAnimation className="  w-[50%]"/>}
                 {showInteractifAnimation && <InteractifAnimation className="z-0"/>}
             </div>
-            <div className = "w-full flex flex-col justify-end items-center z-0 md:mb-64 landscape:md:mb-14 landscape:xl:mb-20 landscape:2xl:mb-20"
+            <div className = "w-full flex flex-col justify-end items-center z-0 xs:mb-4 landscape:lg:mb-14 "
             >
                 <div className = "flex flex-col justify-center items-center">
-                    <h1 className="portrait:md:text-8xl portrait:xl:text-9xl lanscape:md:text-6xl landscape:xl:text-7xl">Hello, I'm Leo</h1>
-                    <span className="text-base md:text-xl xl:text-4xl landscape:xs:text-lg landscape:sm:text-lg landscape:md:text-2xl">& Welcome to my Portfolio!</span>
+                    <h1 className="portrait:xs:text-7xl landscape:xs:text-6xl portrait:xl:text-9xl lanscape:md:text-6xl landscape:xl:text-7xl">Hello, I'm Leo</h1>
+                    <span className="text-lg md:text-xl xl:text-4xl landscape:xs:text-lg landscape:sm:text-lg landscape:md:text-2xl">& Welcome to my Portfolio!</span>
                 </div>
                 <motion.div
                     className = "mask z-1"
@@ -78,7 +78,7 @@ function Intro({
                 >
                     <img src='/assets/img/double-chevron-up-svgrepo-com.svg'
                          alt='Double Chevron'
-                         className="h-20 filter invert rotate-90 "
+                         className="h-20 landscape:xs:h-10 landscape:lg:h-20 filter invert rotate-90 "
                         
                     />
                 </motion.div>

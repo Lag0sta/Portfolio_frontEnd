@@ -71,18 +71,22 @@ input:placeholder {
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
+    background: black;
+
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #000;
-    border-left: solid 1px white;
+    background: #fff;
 
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #fff;
+    background: #000;
+    border-left: solid 1px white;
+    border-radius: 15px
+
 }
 
 /* Handle on hover */

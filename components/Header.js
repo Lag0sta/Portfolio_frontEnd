@@ -120,7 +120,7 @@ function Header({
       }
     } else if (isLg || isXl || is2xl) {
       setHeader(
-        <div className="w-screen landscape:lg:h-24 landscape:xl:h-24 landscape:2xl:h-24 backdrop-filter backdrop-blur-sm">
+        <div className="w-screen landscape:lg:h-24 landscape:xl:h-24 landscape:2xl:h-24 backdrop-filter backdrop-blur-sm border-b border-white">
           <div className=" h-16 from-black/95 to-black/60 bg-gradient-to-b" />
           <div className=" h-8 from-black/60 to-transparent bg-gradient-to-b " />
         </div>
