@@ -270,6 +270,11 @@ function InteractifAnimation() {
                   "enable": true,
                   "mode": "repulse",
                   'distance': 1,
+                },
+                "onPress": {
+                  "enable": true,
+                  "mode": "repulse",
+                  'distance': 1,
                 }
               },
 
