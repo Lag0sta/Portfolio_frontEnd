@@ -66,6 +66,9 @@ function Home() {
                   isActif={isActif}
                   contactRef={contactRef}
                   isModalOpen={isModalOpen}
+                  handleInfoClick={handleInfoClick}
+                  handlePortfolioClick={handlePortfolioClick}
+                  handleContactClick={handleContactClick}
           />
         </div>
       

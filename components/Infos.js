@@ -97,13 +97,17 @@ function Infos({
         <div className="w-fit h-fit flex flex-col justify-evenly flex-wrap mt-10 landscape:xq:w-[64%] landscape:mt-4 landscape:lg:ml-10">
           <Skills/>
           <div className="flex justify-end ">
-            <button className=" w-12 h-10 landscape:w-10 landscape:h-8 landscape:lg:w-12 landscape:lg:h-10 mt-2 cursor-pointer"
+            <button className=" w-12 h-10  landscape:w-10 landscape:h-8 landscape:lg:w-[52px] landscape:lg:h-[44px] mt-2 cursor-pointer"
               onClick={() => openModal()}
               onTouchStart={() => openModal()}
             >
+              <div className="flex justify-evenly">
+              <span className="text-sm xs:text-xs opacity-60 mt-1">&lt;</span>
               <NeonFlickerEffect delay={0.5}>
-                <span data-text='CV'>CV</span>
+                <span data-text='CV' className="xs:text-sm">CV</span> 
               </NeonFlickerEffect>
+              <span className="text-sm xs:text-xs opacity-60 mt-1">/&gt;</span>
+              </div>
             </button>
           </div>
         </div>

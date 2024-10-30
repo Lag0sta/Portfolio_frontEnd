@@ -22,7 +22,7 @@ const CvModal = ({ isModalOpen, onClose, closeModal }) => {
   useLockBodyScroll();
 
     return (
-      <div className="border">
+      <div className="border" aria-modal="true">
          {isModalOpen && (
         <div className="fixed top-0 left-0 w-screen h-screen bg-black opacity-60 z-50 backdrop-filter backdrop-blur-sm" />
       )}

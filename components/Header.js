@@ -14,7 +14,10 @@ function Header({
   portfolioRef,
   isActif,
   contactRef,
-  isModalOpen
+  isModalOpen,
+  handleInfoClick,
+  handlePortfolioClick,
+  handleContactClick
 },) {
 
   const [infoText, setInfoText] = useState('Info');
@@ -25,6 +28,8 @@ function Header({
   const [contactRandomText, setContactRandomText] = useState('')
 
   const [header, setHeader] = useState(null)
+
+  const prefix = '>_'
 
   const isLandscape = useMediaQuery({ query: '(orientation: landscape)' });
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
@@ -67,6 +72,7 @@ function Header({
         behavior: 'smooth'
       });
       titleAnimation(infoText, setInfoRandomText);
+      handleInfoClick(true)
     }
   };
 
@@ -79,6 +85,7 @@ function Header({
         behavior: 'smooth'
       });
       titleAnimation(portfolioText, setPortfolioRandomText);
+      handlePortfolioClick(true)
     }
   }
 
@@ -95,6 +102,7 @@ function Header({
         behavior: 'smooth'
       });
       titleAnimation(contactText, setContactRandomText);
+      handleContactClick(true)
     }
   }
 
@@ -103,19 +111,19 @@ function Header({
       if (isPortrait) {
         setHeader(
           <div className="w-screen">
-            <div className=" h-24 from-black/100 to-transparent bg-gradient-to-b backdrop-filter backdrop-blur-sm" />
+            <div className="xs:h-20 h-24 from-black/100 to-transparent bg-gradient-to-b backdrop-filter backdrop-blur-sm" />
           </div>
         )
       } else if (isLandscape) {
         setHeader(
           <div>
-          <div className="w-screen flex justify-between pointer-events-none">
-            <div className="h-screen w-[13%] px-0 mt-0 bg-gradient-to-r from-black/95 to-black/45 p-1.7vh py-0 backdrop-filter backdrop-blur-sm border-r border-white border-opacity-70 pointer-events-none" />
+            <div className="w-screen flex justify-between pointer-events-none">
+              <div className="h-screen w-[14%] px-0 mt-0 bg-gradient-to-r from-black/95 to-black/45 p-1.7vh py-0 backdrop-filter backdrop-blur-sm border-r border-white border-opacity-70 pointer-events-none" />
 
-          <div className="h-screen w-[13%] px-0 mt-0 bg-gradient-to-l from-black/90 to-black/55 p-1.7vh py-0 backdrop-filter backdrop-blur-sm border-l border-white border-opacity-70 pointer-events-none"
-          />
-        </div>
-        </div>
+              <div className="h-screen w-[14%] px-0 mt-0 bg-gradient-to-l from-black/90 to-black/55 p-1.7vh py-0 backdrop-filter backdrop-blur-sm border-l border-white border-opacity-70 pointer-events-none"
+              />
+            </div>
+          </div>
         )
       }
     } else if (isLg || isXl || is2xl) {
@@ -132,7 +140,7 @@ function Header({
   return (
     <div className='pointer-events-none'>
       <nav className="w-screen absolute pointer-events-none z-10   flex justify-between items-center landscape:xs:h-screen landscape:lg:h-24  portrait:p-2 landscape:lg:px-10 ">
-        <img className={`portrait:w-20 landscape:xs:w-24 landscape:lg:w-16 landscape:xs:ml-2 ${isModalOpen ? 'pointer-events-none' : 'pointer-events-auto'}`}
+        <img className={`portrait:xs:w-16 portrait:lg:w-20 landscape:xs:w-24 landscape:lg:w-16 landscape:xs:ml-2 ${isModalOpen ? 'pointer-events-none' : 'pointer-events-auto'}`}
           src='/assets/img/logo.png'
           alt='logo'
           onClick={handleScrollAcceuil}
@@ -140,25 +148,33 @@ function Header({
 
         />
         <nav className={`flex justify-around portrait:justify-evenly landscape:xs:h-full landscape:lg:h-fit landscape:xs:w-28 landscape:lg:mt-1 landscape:lg:w-fit landscape:lg:mx-12 landscape:xs:flex-col landscape:lg:flex-row landscape:xs:items-center ${isModalOpen ? 'pointer-events-none' : 'pointer-events-auto'}`}>
-          <button className="bg-[#333] bg-opacity-80 portrait:mr-2 landscape:lg:mx-2"
+          <button className="bg-[#333] bg-opacity-80 py-2 xs:text-sm portrait:xs:mr-1  landscape:lg:mx-2"
             onClick={handleScrollInfo}
             onTouchStart={handleScrollInfo}
           >
-
+            <span className="text-sm xs:text-xs opacity-60">&lt;</span>
             {infoRandomText || infoText}
+            <span className="text-sm xs:text-xs opacity-60">/&gt;</span>
+
           </button>
-          <button className="bg-[#333] bg-opacity-80 portrait:mr-2 landscape:lg:mx-2"
+          <button className="bg-[#333] bg-opacity-80 py-2 xs:text-sm portrait:xs:mr-1 landscape:lg:mx-2 stroke stroke-white stroke-width-2"
             onClick={handleScrollPortfolio}
             onTouchStart={handleScrollPortfolio}
           >
+            <span className="text-sm xs:text-xs opacity-60">&lt;</span>
             {portfolioRandomText || portfolioText}
+            <span className="text-sm xs:text-xs opacity-60">/&gt;</span>
+
           </button>
-          <button className="bg-[#333] bg-opacity-80 portrait:mr-2 landscape:lg:mx-2 "
+          <button className="bg-[#333] bg-opacity-80 py-2 xs:text-sm portrait:xs:mr-1 landscape:lg:mx-2 "
             onClick={handleScrollContact}
             onTouchStart={handleScrollContact}
 
           >
+            <span className="text-sm xs:text-xs opacity-60">&lt;</span>
             {contactRandomText || contactText}
+            <span className="text-sm xs:text-xs opacity-60">/&gt;</span>
+
           </button>
         </nav>
       </nav>

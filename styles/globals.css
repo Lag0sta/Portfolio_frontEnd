@@ -28,7 +28,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-h1, h2 {
+h1, h2, h3 {
   font-family: "SDGlitch";
   font-weight: initial;
 }
@@ -55,7 +55,7 @@ button {
     color: white;
 }
 
-input {
+input, textarea {
   margin: 5px;
   width: 85%;
   color: white;
@@ -64,6 +64,11 @@ input {
 }
 
 input:placeholder {
+  font-family: 'Cascadia Code';
+  color:rgba(250,250,250,0.8);
+}
+
+textarea:placeholder {
   font-family: 'Cascadia Code';
   color:rgba(250,250,250,0.8);
 }

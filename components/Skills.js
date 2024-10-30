@@ -39,8 +39,8 @@ function Skills() {
     setActive(newActive);
   };
 
-  const buttonClass = ` mr-2 w-auto  py-2 px-3 rounded-lg  scale-[90%] translate-x-1`;
-  const activeClass = active === 'left' ? ' text-white  scale-[105%]  translate-x-0 -translate-y-0.5' : ' text-white   scale-[105%] translate-x-1 -translate-y-0.1';
+  const buttonClass = ` mr-2 w-auto  py-2 px-3 rounded-sm  scale-[90%]`;
+  const activeClass = active === 'left' ? ' text-white  scale-[110%]  translate-x-1 -translate-y-0.5' : ' text-white   scale-[110%] translate-x-0 -translate-y-0.1';
 
   const renderSkillGauges = (skills) => {
     const previousWidth = useRef(0);
@@ -49,13 +49,13 @@ function Skills() {
       return (
         <motion.div
           key={i}
-          className="h-6 w-[full] ml-[20px] mb-4 landscape:xs:mb-1.5 landscape:lg:mb-6  transition-width-[0.5s]-ease-in-out"
+          className="h-6 w-[full] ml-[20px] mb-4 landscape:xs:mb-1.5 landscape:lg:mb-6 landscape:lg:ml-3 transition-width-[0.5s]-ease-in-out"
           style={{ width: `${skill.value}%` }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <span className={" text-xs scale-y-[90%] landscape:xs:ml-3"}>{skill.name}</span>
+          <span className={" landscape:lg:ml-3 text-xs scale-y-[90%] "}>{skill.name}</span>
 
           <motion.div className="w-72 h-2 bg-gray-300 rounded-md border border-gray-300 landscape:xs:w-72 landscape:lg:w-96 landscape:xl:w-96 landscape:2xl:w-96 landscape:lg:ml-3"
             animate={{ x: 0 }}
@@ -83,12 +83,28 @@ function Skills() {
 
   return (
     <div className="w-full h-full flex flex-col ">
-      <div className=" flex justify-center  w-fit ">
+      <div className=" flex justify-center  w-fit relative">
         <motion.div
-          className="w-1 h-1 rounded-full bg-black"
+          className="w-1 h-1 rounded-full bg-black absolute left-0 -top-0.5"
           initial={{ translateY: -6, translateX: 50 }}
           animate={{ translateY: -6, translateX: active === 'left' ? 50 : 125 }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          transition={{ duration: 0.3, ease: 'easeInOut', delay: 0 }}
+
+        />
+        <motion.div
+          className="w-1 h-1 rounded-full bg-black opacity-[50%] absolute left-0 -top-0.5"
+          initial={{ translateY: -6, translateX: 50 }}
+          animate={{ translateY: -6, translateX: active === 'left' ? 50 : 125 }}
+          transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.1 }}
+
+        />
+
+        <motion.div
+          className="w-1 h-1 rounded-full bg-black opacity-[25%] absolute left-0 -top-0.5"
+          initial={{ translateY: -6, translateX: 50 }}
+          animate={{ translateY: -6, translateX: active === 'left' ? 50 : 125 }}
+          transition={{ duration: 0.3, ease: 'easeInOut', delay: 0.15 }}
+
         />
         <div className="flex ml-5">
           {['left', 'right'].map((tab, index) => (
