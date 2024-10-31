@@ -140,6 +140,7 @@ function Contact({ contactClick, handleContactClick }) {
         </div>
         {isIncorrect && (
           <MsgModal
+            isIncorrect={isIncorrect}
             setIsIncorrect={setIsIncorrect}
             errorNumber={errorNumber}
             setErrorNumber={setErrorNumber}

@@ -1,24 +1,23 @@
+import { useState } from "react";
 import { useLockBodyScroll } from "@uidotdev/usehooks";
+
+import MsgModal from "./MsgModal";
 
 const CvModal = ({ isModalOpen, onClose, closeModal }) => {
     const cvUrl = './assets/img/CV_LR_2025.jpg'
     const filename = 'CV_LR_2025.jpg'
+    const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false)
   
 
     const handleCloseModal = () => {
       closeModal(false)
     }
-    const handleDownload = () => {
-        if (window.confirm('Are you sure you want to download my Curriculum Vitae?')) {
-          const link = document.createElement('a');
-          link.href = cvUrl;
-          link.download = filename;
-          link.click();
-        }
+    const handleDownloadModal = () => {
+      setIsDownloadModalOpen(true)
     
       }
-  // h-screen/2 md:h-60vh w-3/4 m-0 p-0 fixed -translate-y-[79%] -translate-x-[88%] z-50 bg-black ml-5 
 
+     
   useLockBodyScroll();
 
     return (
@@ -30,13 +29,13 @@ const CvModal = ({ isModalOpen, onClose, closeModal }) => {
              style={{ boxShadow: `0 0 0 0.75px #222, 0 0 0 1.5px #333, 0 0 0 2.25px #444, 0 0 0 3px #555, 0 0 0 3.75px #666` }}>
           {isModalOpen && (
             <div className="portrait:h-[14%] landscape:h-[30%] w-full bg-black border-b-2 border-white pt-5">
-              <div className="  bg-black flex justify-between align-center">
-                <button className=" ml-4 cursor-pointer border-1 border-solid border-white bg-white text-black"
-                        onClick={handleDownload}
+              <div className="  bg-black flex justify-end align-center mr-4">
+                <button className=" mr-4 ml-4 cursor-pointer bg-gray-400 text-white hover:bg-white hover:text-black"
+                        onClick={handleDownloadModal}
                 >
                   Download
                 </button>
-                <button className="mr-4 cursor-pointer border-1 border-solid border-white bg-white text-black"
+                <button className="mr-4 cursor-pointer bg-gray-400 text-white hover:bg-white hover:text-black"
                         onClick={handleCloseModal}>
                   Close
                 </button>
@@ -44,14 +43,18 @@ const CvModal = ({ isModalOpen, onClose, closeModal }) => {
             </div>
           )}
           {isModalOpen && (
-            <div className="h-screen w-[100%] overflow-y-auto">
+            <div className="h-[screen] w-[100%] overflow-y-auto">
               <div className="mt-1 w-[100%] flex justify-center">
                 <img
                   src='./assets/img/CV_LR_2025.jpg'
-                  className="w-auto h-auto "
+                  className=" max-w-[100%] w-[60%] "
                 />
               </div>
             </div>
+          )}
+          {isDownloadModalOpen &&(
+            <MsgModal isDownloadModalOpen={isDownloadModalOpen}
+                      setIsDownloadModalOpen={setIsDownloadModalOpen}/>
           )}
         </div>
       </div>

@@ -1,9 +1,38 @@
 import { useLockBodyScroll } from "@uidotdev/usehooks";
 
-const MsgModal = ({ errorNumber, setErrorNumber, setIsIncorrect }) => {
-  let msgError;
-  let button;
+const MsgModal = ({
+  errorNumber,
+  setErrorNumber,
+  isIncorrect,
+  setIsIncorrect,
+  isDownloadModalOpen,
+  setIsDownloadModalOpen }) => {
+  const cvUrl = './assets/img/CV_LR_2025.jpg'
+  const filename = 'CV_LR_2025.jpg'
 
+  let msgError;
+  let msgDownload =
+    <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+      <h3 className="text-white text-xl leading-none " id="modal-title">Message</h3>
+      <div className="mt-2">
+        <p className="text-xs text-gray-400 leading-none">You are about to download the curriculum vitae, do you want to proceed ?</p>
+      </div>
+    </div>
+  let downloadButton =
+    <div class="bg-black border-t border-t-white-400  px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+      <button type="button"
+        class="inline-flex w-full justify-center rounded-md bg-black border border-white px-3 py-2 text-sm font-semibold text-white hover:text-black shadow-sm hover:bg-white sm:ml-3 sm:w-auto"
+        style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
+        onClick={() => handleDownload()}
+      >Download</button>
+      <button type="button"
+        class="inline-flex w-full justify-center rounded-md bg-black border border-white px-3 py-2 text-sm font-semibold text-white hover:text-black shadow-sm hover:bg-white sm:ml-3 sm:w-auto"
+        style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
+        onClick={() => closeDownloadModal()}
+      >Abort</button>
+    </div>
+
+  let button
   if (errorNumber === 1) {
     msgError =
       <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
@@ -57,7 +86,7 @@ const MsgModal = ({ errorNumber, setErrorNumber, setIsIncorrect }) => {
         </button>
       </div>
   }
- 
+
 
   function closeModal() {
     setIsIncorrect(false)
@@ -66,8 +95,21 @@ const MsgModal = ({ errorNumber, setErrorNumber, setIsIncorrect }) => {
     }
   }
 
+  function closeDownloadModal() {
+    setIsDownloadModalOpen(false)
+
+  }
+
+  function handleDownload() {
+    const link = document.createElement('a');
+    link.href = cvUrl;
+    link.download = filename;
+    link.click();
+    setIsDownloadModalOpen(false)
+  }
+
   useLockBodyScroll();
-  
+
   return (
     <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
 
@@ -84,10 +126,27 @@ const MsgModal = ({ errorNumber, setErrorNumber, setIsIncorrect }) => {
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
                   </svg>
                 </div>
-                {msgError}
+                {isIncorrect && (
+                  <div>
+                    {msgError}
+                  </div>
+                )}  {isDownloadModalOpen && (
+                  <div>
+                    {msgDownload}
+                  </div>
+                )}
               </div>
             </div>
-            {button}
+            {isIncorrect && (
+              <div>
+                {button}
+
+              </div>
+            )}  {isDownloadModalOpen && (
+              <div>
+                {downloadButton}
+              </div>
+            )}
           </div>
         </div>
       </div>
