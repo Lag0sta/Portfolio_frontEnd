@@ -58,7 +58,7 @@ function Infos({
   return (
     <div classname="w-[full] h-full ">
 
-      <div className=" flex justify-center mt-24 landscape:xs:mt-8 landscape:lg:mt-24">
+      <div className=" flex justify-center mt-20 landscape:xs:mt-6 landscape:lg:mt-24">
         <h2 className=""
           id='info'
           onMouseOver={() => { handleMouseOver() }}
@@ -88,7 +88,7 @@ function Infos({
             )}
           </div>
           <div>
-          <p className="portrait:xs:text-sm portrait:lg:text-base portrait:xs:w-56 portrait:lg:w-64 landscape:xs:text-xs landscape:lg:text-sm landscape:w-fit landscape:md:fit mt-4 landscape:mt-5 ">FullStack Develloper with illustration and Motion Graphics background, I have serious passion for UI effects and animations</p>
+          <p className="portrait:xs:text-sm portrait:lg:text-base portrait:xs:w-56 portrait:lg:w-64 landscape:xs:text-xs landscape:lg:text-sm landscape:w-fit landscape:md:fit mt-4 landscape:mt-5 ">FullStack Developer with illustration and Motion Graphics background, I have a serious passion for UI effects and animations</p>
 
           </div>
           

@@ -27,7 +27,7 @@ function Portfolio({ handlePortfolioClick, portfolioClick }) {
 
   return (
     <div className="flex flex-col justify-center ">
-      <div className="flex justify-center portrait:mt-24 landscape:xs:mt-8 landscape:sm:mt-8 landscape:md:mt-8 landscape:lg:mt-24 landscape:xl:mt-24 landscape:2xl:mt-24">
+      <div className="flex justify-center portrait:mt-24 landscape:xs:mt-6 landscape:sm:mt-8 landscape:md:mt-8 landscape:lg:mt-24 landscape:xl:mt-24 landscape:2xl:mt-24">
         <h2 id='info'
           onMouseOver={() => { handleMouseOver(); }}
           onMouseOut={handleMouseOut}

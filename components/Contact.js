@@ -4,6 +4,7 @@ import emailjs from 'emailjs-com';
 
 import { titleAnimation } from './titleAnimation';
 import MsgModal from './MsgModal';
+import NeonFlickerEffect from './neonFlickerEffect';
 
 function Contact({ contactClick, handleContactClick }) {
 
@@ -105,7 +106,7 @@ function Contact({ contactClick, handleContactClick }) {
         <div>
           
         </div>
-        <div className="landscape:w-1/3 flex flex-col justify-evenly items-center landscape:mr-6 ">
+        <div className="portrait:xs:mt-8 landscape:w-1/3 flex flex-col justify-evenly items-center landscape:mr-6 ">
 
           <input className=""
             type='text'
@@ -124,13 +125,16 @@ function Contact({ contactClick, handleContactClick }) {
             onChange={(e) => setMessage(e.target.value)}
             value={message}
           />
-          <button className="h-12 w-20 mt-3 bg-black border border-white font-bold text-white text-opacity-80"
+          <button className="h-12 w-20 flex flex-row justify-center items-center mt-3 bg-black border border-white font-bold text-white text-opacity-80 hover:bg-white hover:text-black"
             style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
             onClick={sendEmail}
           >
-            <span className="text-sm opacity-60">&lt;</span>
+            <span className="text-sm opacity-60 mt-0.5">&lt;</span>
+            <NeonFlickerEffect delay={0.5}>
             SEND
-            <span className="text-sm opacity-60">/&gt;</span>
+            </NeonFlickerEffect>
+
+            <span className="text-sm opacity-60 mt-0.5">/&gt;</span>
 
           </button>
         </div>

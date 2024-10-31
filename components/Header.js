@@ -140,7 +140,7 @@ function Header({
   return (
     <div className='pointer-events-none'>
       <nav className="w-screen absolute pointer-events-none z-10   flex justify-between items-center landscape:xs:h-screen landscape:lg:h-24  portrait:p-2 landscape:lg:px-10 ">
-        <img className={`portrait:xs:w-16 portrait:lg:w-20 landscape:xs:w-24 landscape:lg:w-16 landscape:xs:ml-2 ${isModalOpen ? 'pointer-events-none' : 'pointer-events-auto'}`}
+        <img className={`portrait:xs:w-16 portrait:lg:w-20 landscape:xs:w-24 landscape:lg:w-16 landscape:xs:ml-2 hover:w-[72px] ${isModalOpen ? 'pointer-events-none' : 'pointer-events-auto'}`}
           src='/assets/img/logo.png'
           alt='logo'
           onClick={handleScrollAcceuil}
@@ -148,7 +148,7 @@ function Header({
 
         />
         <nav className={`flex justify-around portrait:justify-evenly landscape:xs:h-full landscape:lg:h-fit landscape:xs:w-28 landscape:lg:mt-1 landscape:lg:w-fit landscape:lg:mx-12 landscape:xs:flex-col landscape:lg:flex-row landscape:xs:items-center ${isModalOpen ? 'pointer-events-none' : 'pointer-events-auto'}`}>
-          <button className="bg-[#333] bg-opacity-80 py-2 xs:text-sm portrait:xs:mr-1  landscape:lg:mx-2"
+          <button className="bg-[#333] bg-opacity-80 py-2 xs:text-sm portrait:xs:mr-1  landscape:lg:mx-2 hover:bg-white hover:text-black"
             onClick={handleScrollInfo}
             onTouchStart={handleScrollInfo}
           >
@@ -157,7 +157,7 @@ function Header({
             <span className="text-sm xs:text-xs opacity-60">/&gt;</span>
 
           </button>
-          <button className="bg-[#333] bg-opacity-80 py-2 xs:text-sm portrait:xs:mr-1 landscape:lg:mx-2 stroke stroke-white stroke-width-2"
+          <button className="bg-[#333] bg-opacity-80 py-2 xs:text-sm portrait:xs:mr-1 landscape:lg:mx-2 stroke stroke-white stroke-width-2 hover:bg-white hover:text-black"
             onClick={handleScrollPortfolio}
             onTouchStart={handleScrollPortfolio}
           >
@@ -166,7 +166,7 @@ function Header({
             <span className="text-sm xs:text-xs opacity-60">/&gt;</span>
 
           </button>
-          <button className="bg-[#333] bg-opacity-80 py-2 xs:text-sm portrait:xs:mr-1 landscape:lg:mx-2 "
+          <button className="bg-[#333] bg-opacity-80 py-2 xs:text-sm portrait:xs:mr-1 landscape:lg:mx-2 hover:bg-white hover:text-black"
             onClick={handleScrollContact}
             onTouchStart={handleScrollContact}
 

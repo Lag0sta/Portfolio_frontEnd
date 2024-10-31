@@ -49,7 +49,7 @@ function Skills() {
       return (
         <motion.div
           key={i}
-          className="h-6 w-[full] ml-[20px] mb-4 landscape:xs:mb-1.5 landscape:lg:mb-6 landscape:lg:ml-3 transition-width-[0.5s]-ease-in-out"
+          className="h-6 w-[full] ml-[20px] mb-3 landscape:xs:mb-1.5 landscape:lg:mb-6 landscape:lg:ml-3 transition-width-[0.5s]-ease-in-out"
           style={{ width: `${skill.value}%` }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
